@@ -5,15 +5,73 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>My Website</title>
+    <title>Lya's Birthday Adventure</title>
     <link rel="stylesheet" href="./style.css">
     <link rel="icon" href="./favicon.ico" type="image/x-icon">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        olive: '#6E7B58',
+                        orange: '#C86B47',
+                        gray: '#2F3E32'
+                    }
+                }
+            }
+        }
+    </script>
 </head>
 
 <body>
-    <main>
-        <h1>Welcome to My Website</h1>
-    </main>
+
+    <!-- navbar -->
+    <div class="bg-olive text-white p-4" style="font-family: 'Playfair Display', serif">
+        <nav class="flex justify-center space-x-8">
+            <a href="/">Home</a>
+            <a href="/gallery">Gallery</a>
+            <a href="/card">Card</a>
+        </nav>
+    </div>
+    <!-- header -->
+    <header class="flex justify-center m-8" style="font-family: 'Playfair Display', serif">
+        <h1 class="text-9xl text-gray">Happy Birthday Lyaaaa</h1>
+    </header>
+
+    <body>
+        <div class="bg-orange m-24 p-8 rounded flex justify-between items-center"
+            style="font-family: 'Playfair Display', serif">
+
+            <!-- Left side -->
+            <div class="flex flex-col space-y-6">
+                <h1 class="text-white text-7xl">Lya's Birthday Adventure</h1>
+                <a href="/puzzles/crossword.html">
+                    <button class="bg-olive text-white px-6 py-2 rounded-full hover:bg-olive/90 transition">
+                        me me me click me pleaseeee
+                    </button>
+                </a>
+            </div>
+
+            <!-- Right side -->
+            <div class="relative w-64 h-64 mr-12">
+                <!-- Bottom square (rotated left) -->
+                <img src="/images/pic1.jpg" alt="lya cantik"
+                    class="rounded absolute rotate-[-8deg] w-44 left-20 z-10 shadow-lg">
+
+                <!-- Top image (rotated right, overlapping) -->
+                <img src="/images/pic2.jpg" alt="lya cantik"
+                    class="rounded absolute rotate-[20deg] w-40 right-32  z-20 shadow-xl">
+            </div>
+
+        </div>
+    </body>
+
+
     <script src="index.js"></script>
 </body>
 

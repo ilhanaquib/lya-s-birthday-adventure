@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Lya's Crossword</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+
+    <div class="space-y-4 text-center">
+        <h1 class="text-3xl font-bold">Crossword Puzzle</h1>
+
+        <!-- Crossword grid -->
+        <div id="crossword" class="grid grid-cols-8 gap-1 w-max mx-auto">
+            <!-- 13x8 grid example -->
+            <!-- You can generate more dynamically if you want -->
+            <!-- Empty cells: use 'bg-gray-300' -->
+            <!-- Fillable cells: input boxes -->
+
+            <!-- Row 1 -->
+            <!--  -->
+            <div class="w-12 h-12 bg-gray-300"></div>
+            <div class="w-12 h-12 bg-gray-300"></div>
+            <div class="w-12 h-12 bg-gray-300"></div>
+            <div class="w-12 h-12 bg-gray-300"></div>
+            <input class="w-12 h-12 text-center uppercase border border-gray-400 bg-white" maxlength="1">
+            <div class="w-12 h-12 bg-gray-300"></div>
+            <div class="w-12 h-12 bg-gray-300"></div>
+            <div class="w-12 h-12 bg-gray-300"></div>
+
+            <!-- Row 2 -->
+            <div class="w-12 h-12 bg-gray-300"></div>
+            <div class="w-12 h-12 bg-gray-300"></div>
+            <div class="w-12 h-12 bg-gray-300"></div>
+            <div class="w-12 h-12 bg-gray-300"></div>
+            <input class="w-12 h-12 text-center uppercase border border-gray-400 bg-white" maxlength="1">
+            <div class="w-12 h-12 bg-gray-300"></div>
+            <div class="w-12 h-12 bg-gray-300"></div>
+            <div class="w-12 h-12 bg-gray-300"></div>
+
+            <!-- Row 3 -->
+            <input class="w-12 h-12 text-center uppercase border border-gray-400 bg-white" maxlength="1">
+            <input class="w-12 h-12 text-center uppercase border border-gray-400 bg-white" maxlength="1">
+            <input class="w-12 h-12 text-center uppercase border border-gray-400 bg-white" maxlength="1">
+            <input class="w-12 h-12 text-center uppercase border border-gray-400 bg-white" maxlength="1">
+            <input class="w-12 h-12 text-center uppercase border border-gray-400 bg-white" maxlength="1">
+            <input class="w-12 h-12 text-center uppercase border border-gray-400 bg-white" maxlength="1">
+            <div class="w-12 h-12 bg-gray-300"></div>
+            <div class="w-12 h-12 bg-gray-300"></div>
+
+            <!-- Row 4 -->
+            <div class="w-12 h-12 bg-gray-300"></div>
+            <div class="w-12 h-12 bg-gray-300"></div>
+            <div class="w-12 h-12 bg-gray-300"></div>
+            <div class="w-12 h-12 bg-gray-300"></div>
+            <input class="w-12 h-12 text-center uppercase border border-gray-400 bg-white" maxlength="1">
+            <div class="w-12 h-12 bg-gray-300"></div>
+            <div class="w-12 h-12 bg-gray-300"></div>
+            <div class="w-12 h-12 bg-gray-300"></div>
+
+            <!-- Row 5 -->
+            <div class="w-12 h-12 bg-gray-300"></div>
+            <input class="w-12 h-12 text-center uppercase border border-gray-400 bg-white" maxlength="1">
+            <div class="w-12 h-12 bg-gray-300"></div>
+            <div class="w-12 h-12 bg-gray-300"></div>
+            <input class="w-12 h-12 text-center uppercase border border-gray-400 bg-white" maxlength="1">
+            <div class="w-12 h-12 bg-gray-300"></div>
+            <div class="w-12 h-12 bg-gray-300"></div>
+            <div class="w-12 h-12 bg-gray-300"></div>
+
+            <!-- Row 6 -->
+            <input class="w-12 h-12 text-center uppercase border border-gray-400 bg-white" maxlength="1">
+            <input class="w-12 h-12 text-center uppercase border border-gray-400 bg-white" maxlength="1">
+            <input class="w-12 h-12 text-center uppercase border border-gray-400 bg-white" maxlength="1">
+            <input class="w-12 h-12 text-center uppercase border border-gray-400 bg-white" maxlength="1">
+            <input class="w-12 h-12 text-center uppercase border border-gray-400 bg-white" maxlength="1">
+            <div class="w-12 h-12 bg-gray-300"></div>
+            <div class="w-12 h-12 bg-gray-300"></div>
+            <div class="w-12 h-12 bg-gray-300"></div>
+
+            <!-- Row 7 -->
+            <div class="w-12 h-12 bg-gray-300"></div>
+            <input class="w-12 h-12 text-center uppercase border border-gray-400 bg-white" maxlength="1">
+            <div class="w-12 h-12 bg-gray-300"></div>
+            <div class="w-12 h-12 bg-gray-300"></div>
+            <input class="w-12 h-12 text-center uppercase border border-gray-400 bg-white" maxlength="1">
+            <div class="w-12 h-12 bg-gray-300"></div>
+            <input class="w-12 h-12 text-center uppercase border border-gray-400 bg-white" maxlength="1">
+            <div class="w-12 h-12 bg-gray-300"></div>
+
+            <!-- Row 8 -->
+            <div class="w-12 h-12 bg-gray-300"></div>
+            <input class="w-12 h-12 text-center uppercase border border-gray-400 bg-white" maxlength="1">
+            <div class="w-12 h-12 bg-gray-300"></div>
+            <input class="w-12 h-12 text-center uppercase border border-gray-400 bg-white" maxlength="1">
+            <input class="w-12 h-12 text-center uppercase border border-gray-400 bg-white" maxlength="1">
+            <input class="w-12 h-12 text-center uppercase border border-gray-400 bg-white" maxlength="1">
+            <input class="w-12 h-12 text-center uppercase border border-gray-400 bg-white" maxlength="1">
+            <input class="w-12 h-12 text-center uppercase border border-gray-400 bg-white" maxlength="1">
+
+            <!-- Row 9 -->
+            <div class="w-12 h-12 bg-gray-300"></div>
+            <input class="w-12 h-12 text-center uppercase border border-gray-400 bg-white" maxlength="1">
+            <div class="w-12 h-12 bg-gray-300"></div>
+            <div class="w-12 h-12 bg-gray-300"></div>
+            <div class="w-12 h-12 bg-gray-300"></div>
+            <div class="w-12 h-12 bg-gray-300"></div>
+            <input class="w-12 h-12 text-center uppercase border border-gray-400 bg-white" maxlength="1">
+            <div class="w-12 h-12 bg-gray-300"></div>
+
+            <!-- Row 10 -->
+            <div class="w-12 h-12 bg-gray-300"></div>
+            <input class="w-12 h-12 text-center uppercase border border-gray-400 bg-white" maxlength="1">
+            <div class="w-12 h-12 bg-gray-300"></div>
+            <div class="w-12 h-12 bg-gray-300"></div>
+            <input class="w-12 h-12 text-center uppercase border border-gray-400 bg-white" maxlength="1">
+            <input class="w-12 h-12 text-center uppercase border border-gray-400 bg-white" maxlength="1">
+            <input class="w-12 h-12 text-center uppercase border border-gray-400 bg-white" maxlength="1">
+            <input class="w-12 h-12 text-center uppercase border border-gray-400 bg-white" maxlength="1">
+
+            <!-- Row 11 -->
+            <div class="w-12 h-12 bg-gray-300"></div>
+            <div class="w-12 h-12 bg-gray-300"></div>
+            <div class="w-12 h-12 bg-gray-300"></div>
+            <div class="w-12 h-12 bg-gray-300"></div>
+            <input class="w-12 h-12 text-center uppercase border border-gray-400 bg-white" maxlength="1">
+            <div class="w-12 h-12 bg-gray-300"></div>
+            <div class="w-12 h-12 bg-gray-300"></div>
+            <div class="w-12 h-12 bg-gray-300"></div>
+
+            <!-- Row 12 -->
+            <div class="w-12 h-12 bg-gray-300"></div>
+            <div class="w-12 h-12 bg-gray-300"></div>
+            <div class="w-12 h-12 bg-gray-300"></div>
+            <div class="w-12 h-12 bg-gray-300"></div>
+            <input class="w-12 h-12 text-center uppercase border border-gray-400 bg-white" maxlength="1">
+            <div class="w-12 h-12 bg-gray-300"></div>
+            <div class="w-12 h-12 bg-gray-300"></div>
+            <div class="w-12 h-12 bg-gray-300"></div>
+
+            <!-- Row 13 -->
+            <div class="w-12 h-12 bg-gray-300"></div>
+            <div class="w-12 h-12 bg-gray-300"></div>
+            <input class="w-12 h-12 text-center uppercase border border-gray-400 bg-white" maxlength="1">
+            <input class="w-12 h-12 text-center uppercase border border-gray-400 bg-white" maxlength="1">
+            <input class="w-12 h-12 text-center uppercase border border-gray-400 bg-white" maxlength="1">
+            <input class="w-12 h-12 text-center uppercase border border-gray-400 bg-white" maxlength="1">
+            <input class="w-12 h-12 text-center uppercase border border-gray-400 bg-white" maxlength="1">
+            <div class="w-12 h-12 bg-gray-300"></div>
+        </div>
+
+        <!-- Button to get values (optional JS part) -->
+        <button onclick="collectAnswers()"
+            class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">
+            Check Answers
+        </button>
+    </div>
+
+    <script>
+        const correctAnswers = [
+            "    S   ",
+            "    L   ",
+            "COOKIE  ",
+            "    P   ",
+            " B  K   ",
+            "YEYEN   ",
+            " E  O O ",
+            " T STARS",
+            " L    E ",
+            " E  MOON",
+            "    O   ",
+            "    T   ",
+            "  ILHAN "
+        ];
+
+        function collectAnswers() {
+            // ❶  Grab every cell inside the grid (inputs and grey divs)
+            const cells = document.querySelectorAll('#crossword > *');
+
+            // ❷  Convert each cell to a single character
+            const letters = Array.from(cells).map(cell => {
+                if (cell.tagName === 'INPUT') {
+                    return cell.value.trim() === "" ? " " : cell.value.trim().toUpperCase();
+                }
+                // grey block → treat as blank placeholder
+                return " ";
+            });
+
+            const rows = 13;
+            const cols = 8;
+            const userAnswers = [];
+
+            for (let r = 0; r < rows; r++) {
+                const rowLetters = letters.slice(r * cols, (r + 1) * cols).join('');
+                userAnswers.push(rowLetters);
+            }
+
+            let allCorrect = true;
+            for (let r = 0; r < rows; r++) {
+                if (userAnswers[r] !== correctAnswers[r]) {
+                    allCorrect = false;
+                    console.log(`❌ Row ${r + 1} is incorrect.`);
+                } else {
+                    console.log(`✅ Row ${r + 1} is correct.`);
+                }
+            }
+
+            alert(allCorrect
+                ? "🎉 All answers are correct!"
+                : "Some rows are incorrect. Try again!");
+        }
+    </script>
+
+</body>
+
+</html>

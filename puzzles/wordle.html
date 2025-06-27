@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Lya's Wordle</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100 min-h-screen flex items-center justify-center">
+    <div class="space-y-6 text-center">
+        <h1 class="text-3xl font-bold">Wordle: Guess the Word!</h1>
+
+        <!-- Grid -->
+        <div id="grid" class="grid grid-rows-6 gap-2">
+            <!-- 6 attempts -->
+            <!-- Each row has 5 input boxes -->
+            <!-- Filled dynamically -->
+        </div>
+
+        <button onclick="submitGuess()" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition">
+            Submit
+        </button>
+    </div>
+
+    <script>
+        const targetWord = "BUNNY";
+        const maxRows = 6;
+        const cols = 5;
+        let currentRow = 0;
+
+        const grid = document.getElementById('grid');
+
+        // Create the grid
+        for (let r = 0; r < maxRows; r++) {
+            const row = document.createElement("div");
+            row.className = "grid grid-cols-5 gap-1 justify-center";
+            for (let c = 0; c < cols; c++) {
+                const input = document.createElement("input");
+                input.setAttribute("maxlength", "1");
+                input.className =
+                    "w-12 h-12 text-center text-xl uppercase border border-gray-400 bg-white";
+                input.disabled = r !== 0;
+                row.appendChild(input);
+            }
+            grid.appendChild(row);
+        }
+
+        function submitGuess() {
+            const row = grid.children[currentRow];
+            const inputs = row.querySelectorAll("input");
+            const guessArray = Array.from(inputs).map(inp => inp.value.trim().toUpperCase());
+
+            if (guessArray.some(letter => letter === "")) {
+                alert("Please fill all 5 letters.");
+                return;
+            }
+
+            const guess = guessArray.join("");
+
+
+            const answerArray = targetWord.split("");
+            const letterCount = {};
+
+            // Count letters in the answer
+            for (let letter of answerArray) {
+                letterCount[letter] = (letterCount[letter] || 0) + 1;
+            }
+
+            // First pass: check for correct position
+            guessArray.forEach((letter, i) => {
+                if (letter === answerArray[i]) {
+                    inputs[i].classList.add("bg-green-400", "text-white", "border-transparent");
+                    letterCount[letter]--;
+                }
+            });
+
+            // Second pass: check for correct letter, wrong position
+            guessArray.forEach((letter, i) => {
+                if (letter !== answerArray[i]) {
+                    if (answerArray.includes(letter) && letterCount[letter] > 0) {
+                        inputs[i].classList.add("bg-yellow-300", "text-black", "border-transparent");
+                        letterCount[letter]--;
+                    } else {
+                        inputs[i].classList.add("bg-gray-300", "text-black", "border-transparent");
+                    }
+                }
+            });
+
+            // Disable current row
+            inputs.forEach(inp => inp.disabled = true);
+
+            // Win check
+            if (guess === targetWord) {
+                alert("🎉 You guessed it right!");
+                return;
+            }
+
+            // Next row
+            currentRow++;
+            if (currentRow >= maxRows) {
+                alert(`❌ Out of tries! The word was ${targetWord}`);
+                return;
+            }
+
+            // Enable next row
+            const nextInputs = grid.children[currentRow].querySelectorAll("input");
+            nextInputs.forEach(inp => inp.disabled = false);
+            nextInputs[0].focus();
+        }
+    </script>
+</body>
+
+</html>

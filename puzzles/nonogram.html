@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Lya's Nonogram</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+    <div class="space-y-4 text-center">
+        <h1 class="text-2xl font-bold">Nonogram Puzzle</h1>
+
+        <!-- Nonogram grid with row and column hints -->
+        <div class="grid grid-cols-[auto_repeat(5,_minmax(0,_1fr))] gap-0">
+            <!-- Top-left empty corner -->
+            <div></div>
+            <!-- Column hints -->
+            <div class="p-1 text-sm font-medium text-center">2</div>
+            <div class="p-1 text-sm font-medium leading-tight text-center">1<br />1</div>
+            <div class="p-1 text-sm font-medium leading-tight text-center">1<br />1</div>
+            <div class="p-1 text-sm font-medium leading-tight text-center">1<br />1</div>
+            <div class="p-1 text-sm font-medium text-center">2</div>
+
+            <!-- Grid Rows -->
+            <!-- Row 1 -->
+            <div class="p-1 text-sm font-medium text-right">1 1</div>
+            <div class="cell bg-white border w-12 h-12" data-row="0" data-col="0"></div>
+            <div class="cell bg-white border w-12 h-12" data-row="0" data-col="1"></div>
+            <div class="cell bg-white border w-12 h-12" data-row="0" data-col="2"></div>
+            <div class="cell bg-white border w-12 h-12" data-row="0" data-col="3"></div>
+            <div class="cell bg-white border w-12 h-12" data-row="0" data-col="4"></div>
+
+            <!-- Row 2 -->
+            <div class="p-1 text-sm font-medium text-right">1 1 1</div>
+            <div class="cell bg-white border w-12 h-12" data-row="1" data-col="0"></div>
+            <div class="cell bg-white border w-12 h-12" data-row="1" data-col="1"></div>
+            <div class="cell bg-white border w-12 h-12" data-row="1" data-col="2"></div>
+            <div class="cell bg-white border w-12 h-12" data-row="1" data-col="3"></div>
+            <div class="cell bg-white border w-12 h-12" data-row="1" data-col="4"></div>
+
+            <!-- Row 3 -->
+            <div class="p-1 text-sm font-medium text-right">1 1</div>
+            <div class="cell bg-white border w-12 h-12" data-row="2" data-col="0"></div>
+            <div class="cell bg-white border w-12 h-12" data-row="2" data-col="1"></div>
+            <div class="cell bg-white border w-12 h-12" data-row="2" data-col="2"></div>
+            <div class="cell bg-white border w-12 h-12" data-row="2" data-col="3"></div>
+            <div class="cell bg-white border w-12 h-12" data-row="2" data-col="4"></div>
+
+            <!-- Row 4 -->
+            <div class="p-1 text-sm font-medium text-right">1 1</div>
+            <div class="cell bg-white border w-12 h-12" data-row="3" data-col="0"></div>
+            <div class="cell bg-white border w-12 h-12" data-row="3" data-col="1"></div>
+            <div class="cell bg-white border w-12 h-12" data-row="3" data-col="2"></div>
+            <div class="cell bg-white border w-12 h-12" data-row="3" data-col="3"></div>
+            <div class="cell bg-white border w-12 h-12" data-row="3" data-col="4"></div>
+
+            <!-- Row 5 -->
+            <div class="p-1 text-sm font-medium text-right">1</div>
+            <div class="cell bg-white border w-12 h-12" data-row="4" data-col="0"></div>
+            <div class="cell bg-white border w-12 h-12" data-row="4" data-col="1"></div>
+            <div class="cell bg-white border w-12 h-12" data-row="4" data-col="2"></div>
+            <div class="cell bg-white border w-12 h-12" data-row="4" data-col="3"></div>
+            <div class="cell bg-white border w-12 h-12" data-row="4" data-col="4"></div>
+        </div>
+
+        <button onclick="checkSolution()" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">
+            Check Answer
+        </button>
+
+        <p id="result" class="text-lg font-semibold mt-2"></p>
+    </div>
+
+    <script>
+        const solution = [
+            [0, 1, 0, 1, 0],
+            [1, 0, 1, 0, 1],
+            [1, 0, 0, 0, 1],
+            [0, 1, 0, 1, 0],
+            [0, 0, 1, 0, 0]
+        ];
+
+        const cells = document.querySelectorAll(".cell");
+
+        cells.forEach(cell => {
+            cell.addEventListener("click", () => {
+                cell.classList.toggle("bg-red-500");
+            });
+        });
+
+        function checkSolution() {
+            let correct = true;
+            cells.forEach(cell => {
+                const row = parseInt(cell.dataset.row);
+                const col = parseInt(cell.dataset.col);
+                const isFilled = cell.classList.contains("bg-red-500");
+                if ((solution[row][col] === 1 && !isFilled) ||
+                    (solution[row][col] === 0 && isFilled)) {
+                    correct = false;
+                }
+            });
+
+            const result = document.getElementById("result");
+            result.textContent = correct ? "✅ You solved it!" : "❌ Incorrect. Try again!";
+            result.className = correct ? "text-green-600 font-bold" : "text-red-600 font-bold";
+        }
+    </script>
+</body>
+
+</html>
