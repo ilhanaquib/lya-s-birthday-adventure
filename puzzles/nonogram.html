@@ -4,71 +4,106 @@
 <head>
     <meta charset="UTF-8" />
     <title>Lya's Nonogram</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="icon" href="./favicon.ico" type="image/x-icon">
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Quicksand:wght@300..700&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        olive: '#6E7B58',
+                        orange: '#C86B47',
+                        gray: '#2F3E32',
+                        beige: '#F3EFEB'
+                    }
+                }
+            }
+        }
+    </script>
 </head>
 
-<body class="bg-gray-100 flex items-center justify-center min-h-screen">
-    <div class="space-y-4 text-center">
-        <h1 class="text-2xl font-bold">Nonogram Puzzle</h1>
+<body class="bg-beige min-h-screen flex items-center justify-center p-4">
+    <div class="grid md:grid-cols-[1fr_auto_1fr] gap-8 w-full max-w-7xl items-start">
 
-        <!-- Nonogram grid with row and column hints -->
-        <div class="grid grid-cols-[auto_repeat(5,_minmax(0,_1fr))] gap-0">
-            <!-- Top-left empty corner -->
-            <div></div>
-            <!-- Column hints -->
-            <div class="p-1 text-sm font-medium text-center">2</div>
-            <div class="p-1 text-sm font-medium leading-tight text-center">1<br />1</div>
-            <div class="p-1 text-sm font-medium leading-tight text-center">1<br />1</div>
-            <div class="p-1 text-sm font-medium leading-tight text-center">1<br />1</div>
-            <div class="p-1 text-sm font-medium text-center">2</div>
+        <!-- Left Spacer -->
+        <div></div>
 
-            <!-- Grid Rows -->
-            <!-- Row 1 -->
-            <div class="p-1 text-sm font-medium text-right">1 1</div>
-            <div class="cell bg-white border w-12 h-12" data-row="0" data-col="0"></div>
-            <div class="cell bg-white border w-12 h-12" data-row="0" data-col="1"></div>
-            <div class="cell bg-white border w-12 h-12" data-row="0" data-col="2"></div>
-            <div class="cell bg-white border w-12 h-12" data-row="0" data-col="3"></div>
-            <div class="cell bg-white border w-12 h-12" data-row="0" data-col="4"></div>
+        <!-- Nonogram Section -->
+        <div class="space-y-4 text-center">
+            <h1 class="text-2xl font-bold text-olive" style="font-family: 'Playfair Display', serif">Lya's Nonogram</h1>
 
-            <!-- Row 2 -->
-            <div class="p-1 text-sm font-medium text-right">1 1 1</div>
-            <div class="cell bg-white border w-12 h-12" data-row="1" data-col="0"></div>
-            <div class="cell bg-white border w-12 h-12" data-row="1" data-col="1"></div>
-            <div class="cell bg-white border w-12 h-12" data-row="1" data-col="2"></div>
-            <div class="cell bg-white border w-12 h-12" data-row="1" data-col="3"></div>
-            <div class="cell bg-white border w-12 h-12" data-row="1" data-col="4"></div>
+            <!-- Nonogram grid with row and column hints -->
+            <div class="grid grid-cols-[auto_repeat(5,_minmax(0,_1fr))] gap-0">
+                <!-- Top-left empty corner -->
+                <div></div>
+                <!-- Column hints -->
+                <div class="p-1 text-sm font-medium text-center">2</div>
+                <div class="p-1 text-sm font-medium leading-tight text-center">1<br />1</div>
+                <div class="p-1 text-sm font-medium leading-tight text-center">1<br />1</div>
+                <div class="p-1 text-sm font-medium leading-tight text-center">1<br />1</div>
+                <div class="p-1 text-sm font-medium text-center">2</div>
 
-            <!-- Row 3 -->
-            <div class="p-1 text-sm font-medium text-right">1 1</div>
-            <div class="cell bg-white border w-12 h-12" data-row="2" data-col="0"></div>
-            <div class="cell bg-white border w-12 h-12" data-row="2" data-col="1"></div>
-            <div class="cell bg-white border w-12 h-12" data-row="2" data-col="2"></div>
-            <div class="cell bg-white border w-12 h-12" data-row="2" data-col="3"></div>
-            <div class="cell bg-white border w-12 h-12" data-row="2" data-col="4"></div>
+                <!-- Grid Rows -->
+                <div class="p-1 text-sm font-medium text-right">1 1</div>
+                <div class="cell bg-white border w-12 h-12" data-row="0" data-col="0"></div>
+                <div class="cell bg-white border w-12 h-12" data-row="0" data-col="1"></div>
+                <div class="cell bg-white border w-12 h-12" data-row="0" data-col="2"></div>
+                <div class="cell bg-white border w-12 h-12" data-row="0" data-col="3"></div>
+                <div class="cell bg-white border w-12 h-12" data-row="0" data-col="4"></div>
 
-            <!-- Row 4 -->
-            <div class="p-1 text-sm font-medium text-right">1 1</div>
-            <div class="cell bg-white border w-12 h-12" data-row="3" data-col="0"></div>
-            <div class="cell bg-white border w-12 h-12" data-row="3" data-col="1"></div>
-            <div class="cell bg-white border w-12 h-12" data-row="3" data-col="2"></div>
-            <div class="cell bg-white border w-12 h-12" data-row="3" data-col="3"></div>
-            <div class="cell bg-white border w-12 h-12" data-row="3" data-col="4"></div>
+                <div class="p-1 text-sm font-medium text-right">1 1 1</div>
+                <div class="cell bg-white border w-12 h-12" data-row="1" data-col="0"></div>
+                <div class="cell bg-white border w-12 h-12" data-row="1" data-col="1"></div>
+                <div class="cell bg-white border w-12 h-12" data-row="1" data-col="2"></div>
+                <div class="cell bg-white border w-12 h-12" data-row="1" data-col="3"></div>
+                <div class="cell bg-white border w-12 h-12" data-row="1" data-col="4"></div>
 
-            <!-- Row 5 -->
-            <div class="p-1 text-sm font-medium text-right">1</div>
-            <div class="cell bg-white border w-12 h-12" data-row="4" data-col="0"></div>
-            <div class="cell bg-white border w-12 h-12" data-row="4" data-col="1"></div>
-            <div class="cell bg-white border w-12 h-12" data-row="4" data-col="2"></div>
-            <div class="cell bg-white border w-12 h-12" data-row="4" data-col="3"></div>
-            <div class="cell bg-white border w-12 h-12" data-row="4" data-col="4"></div>
+                <div class="p-1 text-sm font-medium text-right">1 1</div>
+                <div class="cell bg-white border w-12 h-12" data-row="2" data-col="0"></div>
+                <div class="cell bg-white border w-12 h-12" data-row="2" data-col="1"></div>
+                <div class="cell bg-white border w-12 h-12" data-row="2" data-col="2"></div>
+                <div class="cell bg-white border w-12 h-12" data-row="2" data-col="3"></div>
+                <div class="cell bg-white border w-12 h-12" data-row="2" data-col="4"></div>
+
+                <div class="p-1 text-sm font-medium text-right">1 1</div>
+                <div class="cell bg-white border w-12 h-12" data-row="3" data-col="0"></div>
+                <div class="cell bg-white border w-12 h-12" data-row="3" data-col="1"></div>
+                <div class="cell bg-white border w-12 h-12" data-row="3" data-col="2"></div>
+                <div class="cell bg-white border w-12 h-12" data-row="3" data-col="3"></div>
+                <div class="cell bg-white border w-12 h-12" data-row="3" data-col="4"></div>
+
+                <div class="p-1 text-sm font-medium text-right">1</div>
+                <div class="cell bg-white border w-12 h-12" data-row="4" data-col="0"></div>
+                <div class="cell bg-white border w-12 h-12" data-row="4" data-col="1"></div>
+                <div class="cell bg-white border w-12 h-12" data-row="4" data-col="2"></div>
+                <div class="cell bg-white border w-12 h-12" data-row="4" data-col="3"></div>
+                <div class="cell bg-white border w-12 h-12" data-row="4" data-col="4"></div>
+            </div>
+
+            <button onclick="checkSolution()"
+                class="bg-orange text-white px-4 py-2 rounded hover:bg-blue-700 transition">
+                Check Answer
+            </button>
+
+            <p id="result" class="text-lg font-semibold mt-2"></p>
         </div>
 
-        <button onclick="checkSolution()" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">
-            Check Answer
-        </button>
-
-        <p id="result" class="text-lg font-semibold mt-2"></p>
+        <!-- How to Play -->
+        <div class="max-w-sm text-left bg-white rounded-lg shadow p-4 border border-gray-300">
+            <h2 class="text-xl font-semibold mb-2 text-orange">How to Play</h2>
+            <ul class="list-disc pl-5 space-y-2 text-sm text-gray-700">
+                <li>The numbers tell you how many red squares are in each row or column.</li>
+                <li>Click a square to mark it red (filled).</li>
+                <li>Multiple numbers mean groups separated by at least one blank.</li>
+                <li>Fill the correct pattern to win!</li>
+            </ul>
+        </div>
     </div>
 
     <script>
@@ -94,8 +129,7 @@
                 const row = parseInt(cell.dataset.row);
                 const col = parseInt(cell.dataset.col);
                 const isFilled = cell.classList.contains("bg-red-500");
-                if ((solution[row][col] === 1 && !isFilled) ||
-                    (solution[row][col] === 0 && isFilled)) {
+                if ((solution[row][col] === 1 && !isFilled) || (solution[row][col] === 0 && isFilled)) {
                     correct = false;
                 }
             });
@@ -103,6 +137,11 @@
             const result = document.getElementById("result");
             result.textContent = correct ? "✅ You solved it!" : "❌ Incorrect. Try again!";
             result.className = correct ? "text-green-600 font-bold" : "text-red-600 font-bold";
+
+            if (correct) {
+                localStorage.setItem("nonogramComplete", "true");
+                window.location.href = "/";
+            }
         }
     </script>
 </body>

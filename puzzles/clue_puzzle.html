@@ -4,46 +4,73 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>📅 Date Code Puzzle</title>
+    <title>Lya's Code Puzzle</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="icon" href="./favicon.ico" type="image/x-icon">
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Quicksand:wght@300..700&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        olive: '#6E7B58',
+                        orange: '#C86B47',
+                        gray: '#2F3E32',
+                        beige: '#F3EFEB'
+                    }
+                }
+            }
+        }
+    </script>
 </head>
 
-<body class="bg-yellow-50 text-stone-800 font-sans min-h-screen flex flex-col items-center p-6">
-    <div class="w-full max-w-lg bg-white shadow-xl rounded-2xl p-6 space-y-6">
-        <header class="text-center">
-            <h1 class="text-2xl font-bold text-yellow-700">📅 The Code of Dates</h1>
-            <p class="mt-1 text-sm text-stone-600">Follow the clues — the answer is hidden in time itself.</p>
-        </header>
+<body class="bg-beige text-gray font-sans min-h-screen flex flex-col items-center p-6">
+    <div class="w-full max-w-6xl flex flex-col md:flex-row gap-6">
+        <!-- Puzzle Card -->
+        <div class="flex-1 bg-white shadow-xl rounded-2xl p-6 space-y-6">
+            <header class="text-center">Lya's other number puzzle</h1>
+                <p class="mt-1 text-sm text-gray">i ran out of ideas sorry</p>
+            </header>
 
-        <section class="text-sm">
-            <h2 class="text-lg font-semibold mb-2">🧠 Clues</h2>
-            <ol class="list-decimal list-inside space-y-4">
-                <li>
-                    <strong>"The Day We Planned"</strong><br />
-                    Multiply the number of hours in a day by the number of sides on a hexagon.<br />
-                    Now subtract 18 from your answer, reverse the first two digits, then add 5.<br />
-                    <span class="italic">(This gives the first 2 digits)</span>
-                </li>
-                <li>
-                    <strong>"The Month We Dreamed"</strong><br />
-                    What’s half of 8 squared? Now subtract 8 and reverse it. Then subtract 38 from that.<br />
-                    <span class="italic">(This gives the middle 2 digits)</span>
-                </li>
-                <li>
-                    <strong>"The Number of Forever"</strong><br />
-                    Take 5 squared, add 100, then subtract 0. Drop the first digit.<br />
-                    <span class="italic">(This gives the last 2 digits)</span>
-                </li>
-            </ol>
-        </section>
+            <section class="text-sm space-y-4">
+                <h2 class="text-lg font-semibold text-orange">Clues</h2>
+                <ol class="list-decimal list-inside space-y-4">
+                    <li>
+                        Multiply the number of hours in a day by the number of sides on a hexagon.<br />
+                        Now subtract 18 from your answer, reverse the first two digits, then add 5.<br />
+                        <span class="italic">(This gives the first 2 digits)</span>
+                    </li>
+                    <li>
+                        What’s half of 8 squared? Now subtract 8 and reverse it. Then subtract 38 from that.<br />
+                        <span class="italic">(This gives the middle 2 digits)</span>
+                    </li>
+                    <li>
+                        Take 5 squared, add 100, then subtract 0. Drop the first digit.<br />
+                        <span class="italic">(This gives the last 2 digits)</span>
+                    </li>
+                </ol>
+            </section>
 
-        <!-- Input -->
-        <div class="flex items-center space-x-2">
-            <input id="answer" type="text" maxlength="6" placeholder="Enter the 6‑digit code"
-                class="flex-1 px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-yellow-600" />
-            <button id="checkBtn" class="bg-yellow-600 text-white px-4 py-2 rounded hover:bg-yellow-500">Check</button>
+            <!-- Input -->
+            <div class="flex items-center space-x-2">
+                <input id="answer" type="text" maxlength="6" placeholder="Enter the 6‑digit code"
+                    class="flex-1 px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-olive" />
+                <button id="checkBtn" class="bg-olive text-white px-4 py-2 rounded hover:bg-[#5b694b]">Check</button>
+            </div>
+            <p id="feedback" class="text-center text-sm"></p>
         </div>
-        <p id="feedback" class="text-center text-sm"></p>
+
+        <!-- Notepad -->
+        <aside class="w-full md:w-80 flex-shrink-0 bg-white rounded-2xl p-4 shadow-md h-fit">
+            <h2 class="text-lg font-semibold text-orange mb-2">✍️ Notes</h2>
+            <textarea placeholder="Jot down your math here..."
+                class="w-full h-64 resize-none p-3 rounded border bg-beige text-sm focus:outline-none focus:ring-2 focus:ring-orange leading-relaxed font-mono"></textarea>
+        </aside>
     </div>
 
     <script>
@@ -55,15 +82,15 @@
 
             if (input === CORRECT_CODE) {
                 feedback.textContent = "✅ Correct! You cracked the time code.";
-                feedback.className = "text-center text-green-700 font-semibold";
-
-                localStorage.setItem("game5Complete", "true");
+                feedback.className = "text-center text-olive font-semibold";
+                localStorage.setItem("cluePuzzleComplete", "true");
+                window.location.href = "/";
                 setTimeout(() => {
                     window.location.href = "../index.html";
                 }, 1800);
             } else {
                 feedback.textContent = "❌ Hmm, something’s off. Check your steps.";
-                feedback.className = "text-center text-red-600";
+                feedback.className = "text-center text-orange";
             }
         });
     </script>

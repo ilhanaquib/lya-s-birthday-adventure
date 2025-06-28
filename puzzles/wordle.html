@@ -4,12 +4,33 @@
 <head>
     <meta charset="UTF-8">
     <title>Lya's Wordle</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="icon" href="./favicon.ico" type="image/x-icon">
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Quicksand:wght@300..700&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        olive: '#6E7B58',
+                        orange: '#C86B47',
+                        gray: '#2F3E32',
+                        beige: '#F3EFEB'
+                    }
+                }
+            }
+        }
+    </script>
 </head>
 
-<body class="bg-gray-100 min-h-screen flex items-center justify-center">
+<body class="bg-beige min-h-screen flex items-center justify-center">
     <div class="space-y-6 text-center">
-        <h1 class="text-3xl font-bold">Wordle: Guess the Word!</h1>
+        <h1 class="text-3xl font-bold text-olive" style="font-family: 'Playfair Display', serif">Lya's Wordle</h1>
 
         <!-- Grid -->
         <div id="grid" class="grid grid-rows-6 gap-2">
@@ -18,12 +39,40 @@
             <!-- Filled dynamically -->
         </div>
 
-        <button onclick="submitGuess()" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition">
+
+
+        <button onclick="submitGuess()" class="bg-orange text-white px-4 py-2 rounded hover:bg-green-700 transition">
             Submit
         </button>
+
+        <!-- Virtual Keyboard -->
+        <div id="keyboard" class="mt-6 space-y-2 text-center">
+            <div id="row-1" class="flex justify-center space-x-1"></div>
+            <div id="row-2" class="flex justify-center space-x-1"></div>
+            <div id="row-3" class="flex justify-center space-x-1"></div>
+        </div>
+
     </div>
 
     <script>
+
+        const rows = [
+            ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"],
+            ["A", "S", "D", "F", "G", "H", "J", "K", "L"],
+            ["Z", "X", "C", "V", "B", "N", "M"]
+        ];
+
+        rows.forEach((letters, i) => {
+            const rowDiv = document.getElementById(`row-${i + 1}`);
+            letters.forEach(letter => {
+                const key = document.createElement("div");
+                key.id = `key-${letter}`;
+                key.textContent = letter;
+                key.className = "w-8 h-10 border border-gray-400 rounded flex items-center justify-center bg-white text-black font-semibold";
+                rowDiv.appendChild(key);
+            });
+        });
+
         const targetWord = "BUNNY";
         const maxRows = 6;
         const cols = 5;
@@ -46,6 +95,22 @@
             grid.appendChild(row);
         }
 
+        const allInputs = Array.from(grid.querySelectorAll("input"));
+        allInputs.forEach((inp, idx) => {
+            inp.addEventListener("keydown", (e) => {
+                if (e.key === "Enter") {
+                    e.preventDefault();
+                    let next = idx + 1;
+                    // Skip over any disabled cells
+                    while (next < allInputs.length && allInputs[next].disabled) next++;
+                    if (next < allInputs.length) {
+                        allInputs[next].focus();
+                    }
+                }
+            });
+        });
+
+
         function submitGuess() {
             const row = grid.children[currentRow];
             const inputs = row.querySelectorAll("input");
@@ -61,6 +126,8 @@
 
             const answerArray = targetWord.split("");
             const letterCount = {};
+
+
 
             // Count letters in the answer
             for (let letter of answerArray) {
@@ -90,9 +157,39 @@
             // Disable current row
             inputs.forEach(inp => inp.disabled = true);
 
+            // Update virtual keyboard
+            // Update virtual keyboard colors
+            guessArray.forEach((letter, i) => {
+                const key = document.getElementById(`key-${letter}`);
+                if (!key) return;
+
+                const cell = inputs[i];
+                if (cell.classList.contains("bg-green-400")) {
+                    key.classList.remove("bg-yellow-300", "bg-gray-300", "bg-white");
+                    key.classList.add("bg-green-400", "text-white");
+                } else if (cell.classList.contains("bg-yellow-300")) {
+                    if (!key.classList.contains("bg-green-400")) {          // don't downgrade green
+                        key.classList.remove("bg-gray-300", "bg-white");
+                        key.classList.add("bg-yellow-300", "text-black");
+                    }
+                } else {                                                  // gray
+                    if (
+                        !key.classList.contains("bg-green-400") &&
+                        !key.classList.contains("bg-yellow-300")
+                    ) {
+                        key.classList.remove("bg-white");
+                        key.classList.add("bg-gray-300", "text-black");
+                    }
+                }
+            });
+
+
+
             // Win check
             if (guess === targetWord) {
                 alert("🎉 You guessed it right!");
+                localStorage.setItem("wordleComplete", "true");
+                window.location.href = "/";
                 return;
             }
 
