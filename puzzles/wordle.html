@@ -26,6 +26,8 @@
             }
         }
     </script>
+    <base href="/lya-s-birthday-adventure/">
+
 </head>
 
 <body class="bg-beige min-h-screen flex items-center justify-center">
@@ -189,7 +191,7 @@
             if (guess === targetWord) {
                 alert("🎉 You guessed it right!");
                 localStorage.setItem("wordleComplete", "true");
-                window.location.href = "/";
+                window.location.href = "index.html";
                 return;
             }
 

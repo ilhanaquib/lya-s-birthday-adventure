@@ -26,6 +26,8 @@
             }
         }
     </script>
+    <base href="/lya-s-birthday-adventure/">
+
 </head>
 
 <body class="bg-beige flex items-center justify-center min-h-screen">
@@ -352,7 +354,7 @@
             if (allCorrect) {
                 alert("🎉 All answers are correct! Go find a moth in the home page");
                 localStorage.setItem("crosswordComplete", "true");
-                window.location.href = "/";
+                window.location.href = "index.html";
             } else {
                 alert("Some rows are incorrect. Try again!");
             }

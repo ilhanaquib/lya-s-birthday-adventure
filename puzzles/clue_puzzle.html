@@ -27,6 +27,8 @@
             }
         }
     </script>
+    <base href="/lya-s-birthday-adventure/">
+
 </head>
 
 <body class="bg-beige text-gray font-sans min-h-screen flex flex-col items-center p-6">
@@ -84,9 +86,9 @@
                 feedback.textContent = "✅ Correct! You cracked the time code.";
                 feedback.className = "text-center text-olive font-semibold";
                 localStorage.setItem("cluePuzzleComplete", "true");
-                window.location.href = "/";
+                window.location.href = "index.html";
                 setTimeout(() => {
-                    window.location.href = "../index.html";
+                    window.location.href = "index.html";
                 }, 1800);
             } else {
                 feedback.textContent = "❌ Hmm, something’s off. Check your steps.";
