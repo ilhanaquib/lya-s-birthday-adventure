@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Gallery</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="icon" href="./favicon.ico" type="image/x-icon">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Quicksand:wght@300..700&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        olive: '#6E7B58',
+                        orange: '#C86B47',
+                        gray: '#2F3E32',
+                        beige: '#F3EFEB'
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- <base href="/lya-s-birthday-adventure/"> -->
+</head>
+
+<body>
+
+    <!-- navbar -->
+    <div class="relative bg-olive text-white p-4 overflow-hidden" style="font-family: 'Playfair Display', serif">
+        <nav class="flex justify-center space-x-8">
+            <a href="index.html">Home</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="card.html" class="hidden" id="card">Card</a>
+        </nav>
+    </div>
+
+    <header class="flex flex-col items-center justify-center m-8" style="font-family: 'Playfair Display', serif">
+        <h1 class="text-xl md:text-4xl text-gray z-20 pointer-events-none mb-4">Gallery</h1>
+        <p>This was supposed to be pics of us and it was gonna be cute but we dont have any pics together sooooo lets
+            take lots of them</p>
+    </header>
+
+    <body class="bg-beige min-h-screen ">
+        <div class="max-w-4xl mx-auto px-4 py-8">
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                <img src="gallery/pic1.jpg" alt="pic1" class="w-full h-auto rounded-lg shadow" />
+                <video autoplay muted loop class="w-full rounded-lg shadow">
+                    <source src="gallery/pic2.mp4" type="video/mp4">
+                </video>
+                <img src="gallery/pic4.jpg" alt="pic4" class="w-full h-auto rounded-lg shadow" />
+                <img src="gallery/pic5.jpg" alt="pic5" class="w-full h-auto rounded-lg shadow" />
+                <img src="gallery/pic6.jpg" alt="pic6" class="w-full h-auto rounded-lg shadow" />
+                <img src="gallery/pic7.jpg" alt="pic7" class="w-full h-auto rounded-lg shadow" />
+            </div>
+        </div>
+    </body>
+
+
+    <script src="script.js"></script>
+</body>
+
+</html>
